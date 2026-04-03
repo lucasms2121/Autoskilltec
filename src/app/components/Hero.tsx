@@ -1,12 +1,10 @@
-import { useRef, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useRef } from "react";
+import { motion } from "motion/react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import videoHero from "../../imports/videohero1.mp4";
-import image1Src from "../../imports/image1.jpeg";
 
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoEnded, setVideoEnded] = useState(false);
 
   const scrollToCTA = () => {
     document.querySelector("#cta")?.scrollIntoView({ behavior: "smooth" });
@@ -194,7 +192,7 @@ export function Hero() {
                 WebkitMaskComposite: "source-in",
               }}
             >
-              {/* Video plays once like a GIF */}
+              {/* Video — pauses at second 7 */}
               <video
                 ref={videoRef}
                 src={videoHero}
@@ -203,147 +201,12 @@ export function Hero() {
                 playsInline
                 onTimeUpdate={() => {
                   const v = videoRef.current;
-                  if (v && !videoEnded && v.duration - v.currentTime <= 1) {
-                    setVideoEnded(true);
+                  if (v && v.currentTime >= 7) {
+                    v.pause();
                   }
                 }}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  display: videoEnded ? "none" : "block",
-                }}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
-
-              {/* After video ends: image1 with lightning effect */}
-              <AnimatePresence>
-                {videoEnded && (
-                  <motion.div
-                    className="absolute inset-0"
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0 }}
-                  >
-                    {/* Base image */}
-                    <img
-                      src={image1Src}
-                      alt="Autoskilltec"
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                    />
-
-                    {/* Lightning SVG — electrified logo edges + pulsing glow */}
-                    <svg
-                      className="absolute inset-0 w-full h-full"
-                      viewBox="0 0 400 700"
-                      preserveAspectRatio="xMidYMid slice"
-                      style={{ pointerEvents: "none" }}
-                    >
-                      <defs>
-                        <filter id="lg" x="-100%" y="-100%" width="300%" height="300%">
-                          <feGaussianBlur stdDeviation="4" result="blur" />
-                          <feMerge>
-                            <feMergeNode in="blur" />
-                            <feMergeNode in="blur" />
-                            <feMergeNode in="SourceGraphic" />
-                          </feMerge>
-                        </filter>
-                        <filter id="softglow" x="-50%" y="-50%" width="200%" height="200%">
-                          <feGaussianBlur stdDeviation="18" result="blur" />
-                          <feMerge>
-                            <feMergeNode in="blur" />
-                            <feMergeNode in="SourceGraphic" />
-                          </feMerge>
-                        </filter>
-                        <radialGradient id="pulseGrad" cx="50%" cy="72%" r="55%">
-                          <stop offset="0%" stopColor="#7C3AED" stopOpacity="0.22" />
-                          <stop offset="55%" stopColor="#A855F7" stopOpacity="0.08" />
-                          <stop offset="100%" stopColor="#0D0B2B" stopOpacity="0" />
-                        </radialGradient>
-                        <style>{`
-                          @keyframes pulse  { 0%,100%{opacity:0.4} 50%{opacity:0.75} }
-                          @keyframes bA { 0%,100%{opacity:0} 5%,10%{opacity:1} 12%{opacity:0} 52%,57%{opacity:0.9} 59%{opacity:0} }
-                          @keyframes bB { 0%,100%{opacity:0} 18%,23%{opacity:1} 25%{opacity:0} 68%,73%{opacity:0.85} 75%{opacity:0} }
-                          @keyframes bC { 0%,100%{opacity:0} 33%,38%{opacity:1} 40%{opacity:0} 80%,85%{opacity:0.9} 87%{opacity:0} }
-                          @keyframes bD { 0%,100%{opacity:0} 45%,50%{opacity:1} 52%{opacity:0} 12%,16%{opacity:0.8} 18%{opacity:0} }
-                          @keyframes bE { 0%,100%{opacity:0} 62%,67%{opacity:1} 69%{opacity:0} 25%,29%{opacity:0.75} 31%{opacity:0} }
-                        `}</style>
-                      </defs>
-
-                      {/* Pulsing purple radial glow over whole image */}
-                      <rect x="0" y="0" width="400" height="700"
-                        fill="url(#pulseGrad)"
-                        style={{ animation: "pulse 2.4s ease-in-out infinite" }}
-                      />
-
-                      {/*
-                        Logo = play button, ponta para DIREITA:
-                          TopLeft:   (147, 380)
-                          BotLeft:   (147, 527)
-                          RightTip:  (283, 453)
-                        — 30% menor que anterior, centro mantido em (215,453)
-                      */}
-
-                      {/* LEFT EDGE — vertical: TopLeft → BotLeft */}
-                      <g filter="url(#lg)" style={{ animation: "bA 4s ease-in-out infinite" }}>
-                        <polyline
-                          points="147,380 141,405 153,430 141,453 153,478 141,503 147,527"
-                          fill="none" stroke="#C084FC" strokeWidth="2.6" strokeLinejoin="round" />
-                        <polyline
-                          points="147,380 141,405 153,430 141,453 153,478 141,503 147,527"
-                          fill="none" stroke="white" strokeWidth="0.7" strokeLinejoin="round" />
-                      </g>
-                      {/* LEFT EDGE — echo */}
-                      <g filter="url(#lg)" style={{ animation: "bD 5s ease-in-out infinite 0.9s" }}>
-                        <polyline
-                          points="147,380 153,407 141,432 153,453 141,480 153,505 147,527"
-                          fill="none" stroke="#A855F7" strokeWidth="1.4" strokeLinejoin="round" />
-                      </g>
-
-                      {/* TOP EDGE — diagonal: TopLeft → RightTip */}
-                      <g filter="url(#lg)" style={{ animation: "bB 4.5s ease-in-out infinite 0.4s" }}>
-                        <polyline
-                          points="147,380 178,393 197,413 233,421 252,443 283,453"
-                          fill="none" stroke="#C084FC" strokeWidth="2.6" strokeLinejoin="round" />
-                        <polyline
-                          points="147,380 178,393 197,413 233,421 252,443 283,453"
-                          fill="none" stroke="white" strokeWidth="0.7" strokeLinejoin="round" />
-                      </g>
-                      {/* TOP EDGE — echo */}
-                      <g filter="url(#lg)" style={{ animation: "bE 5.5s ease-in-out infinite 1.3s" }}>
-                        <polyline
-                          points="147,380 171,398 205,407 226,428 261,437 283,453"
-                          fill="none" stroke="#7C3AED" strokeWidth="1.4" strokeLinejoin="round" />
-                      </g>
-
-                      {/* BOTTOM EDGE — diagonal: RightTip → BotLeft */}
-                      <g filter="url(#lg)" style={{ animation: "bC 4.2s ease-in-out infinite 0.8s" }}>
-                        <polyline
-                          points="283,453 252,470 233,487 197,500 171,516 147,527"
-                          fill="none" stroke="#D946EF" strokeWidth="2.6" strokeLinejoin="round" />
-                        <polyline
-                          points="283,453 252,470 233,487 197,500 171,516 147,527"
-                          fill="none" stroke="white" strokeWidth="0.7" strokeLinejoin="round" />
-                      </g>
-                      {/* BOTTOM EDGE — echo */}
-                      <g filter="url(#lg)" style={{ animation: "bA 5.8s ease-in-out infinite 1.6s" }}>
-                        <polyline
-                          points="283,453 259,473 226,486 206,502 179,519 147,527"
-                          fill="none" stroke="#A855F7" strokeWidth="1.4" strokeLinejoin="round" />
-                      </g>
-
-                      {/* Sparks nos vértices */}
-                      <g filter="url(#lg)" style={{ animation: "bB 3s ease-in-out infinite 0.3s" }}>
-                        <line x1="147" y1="380" x2="137" y2="370" stroke="#E9D5FF" strokeWidth="2"/>
-                        <line x1="147" y1="380" x2="135" y2="384" stroke="#C084FC" strokeWidth="1.5"/>
-                        <line x1="147" y1="527" x2="137" y2="537" stroke="#A855F7" strokeWidth="2"/>
-                        <line x1="147" y1="527" x2="135" y2="523" stroke="#C084FC" strokeWidth="1.5"/>
-                        <line x1="283" y1="453" x2="297" y2="448" stroke="#D946EF" strokeWidth="2"/>
-                        <line x1="283" y1="453" x2="297" y2="458" stroke="#E9D5FF" strokeWidth="2"/>
-                      </g>
-                    </svg>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
           </motion.div>
 

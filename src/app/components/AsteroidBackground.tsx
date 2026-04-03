@@ -168,7 +168,7 @@ export function AsteroidBackground() {
           float tailT  = clamp((0.46 - p.x) / 0.92, 0.0, 1.0);
           float lineW  = 0.008;
           float lineY  = 1.0 - smoothstep(0.0, lineW, abs(p.y));
-          float inStreak = step(p.x, 0.47) * step(-0.46, p.x);
+          float inStreak = step(p.x, 0.39) * step(-0.46, p.x);
           float fade   = pow(1.0 - tailT, 1.4);
           float tail   = inStreak * lineY * fade;
 
