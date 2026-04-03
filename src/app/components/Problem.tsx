@@ -130,7 +130,7 @@ export function Problem() {
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: "17px",
-              color: "#B4B4CC",
+              color: "#CECEE8",
               maxWidth: "520px",
               margin: "0 auto",
               lineHeight: 1.7,
@@ -204,7 +204,7 @@ export function Problem() {
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontSize: "15px",
-                    color: "#B4B4CC",
+                    color: "#CECEE8",
                     lineHeight: 1.75,
                   }}
                 >

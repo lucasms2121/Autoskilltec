@@ -124,7 +124,7 @@ export function Services() {
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: "17px",
-              color: "#B4B4CC",
+              color: "#CECEE8",
               maxWidth: "500px",
               margin: "0 auto",
               lineHeight: 1.7,
@@ -181,7 +181,7 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
         >
           {service.title}
         </h3>
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "16px", color: "#B4B4CC", lineHeight: 1.6, marginBottom: "14px" }}>
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "16px", color: "#CECEE8", lineHeight: 1.6, marginBottom: "14px" }}>
           {service.description}
         </p>
         <div className="flex flex-wrap gap-2">

@@ -25,7 +25,7 @@ export function Footer() {
                 className="h-9 w-auto"
               />
             </div>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#B4B4CC", lineHeight: 1.7, maxWidth: "240px" }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#CECEE8", lineHeight: 1.7, maxWidth: "240px" }}>
               Soluções Inteligentes para Empresas que Querem Crescer.
             </p>
             {/* Social */}
@@ -53,7 +53,7 @@ export function Footer() {
                     e.currentTarget.style.borderColor = "rgba(168,85,247,0.2)";
                   }}
                 >
-                  <Icon size={16} color="#B4B4CC" />
+                  <Icon size={16} color="#CECEE8" />
                 </a>
               ))}
             </div>
@@ -76,7 +76,7 @@ export function Footer() {
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
                   className="text-left transition-colors duration-200 hover:text-white"
-                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#B4B4CC" }}
+                  style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#CECEE8" }}
                 >
                   {link.label}
                 </button>
@@ -90,10 +90,10 @@ export function Footer() {
               CONTATO
             </h4>
             <div className="flex flex-col gap-3">
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#B4B4CC" }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#CECEE8" }}>
                 contato@autoskilltec.com.br
               </p>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#B4B4CC" }}>
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#CECEE8" }}>
                 Brasil — Atendimento nacional
               </p>
             </div>
@@ -119,10 +119,10 @@ export function Footer() {
           className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4"
           style={{ borderTop: "1px solid rgba(168,85,247,0.08)" }}
         >
-          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#B4B4CC" }}>
+          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#CECEE8" }}>
             © 2026 Autoskilltec. Todos os direitos reservados.
           </p>
-          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#B4B4CC" }}>
+          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#CECEE8" }}>
             Feito com ✦ e tecnologia para PMEs brasileiras
           </p>
         </div>

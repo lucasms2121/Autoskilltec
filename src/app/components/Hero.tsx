@@ -3,8 +3,18 @@ import { motion } from "motion/react";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import videoHero from "../../imports/videohero1.mp4";
 
+const videoStyle = {
+  width: "clamp(200px, 22vw, 320px)",
+  aspectRatio: "9 / 16",
+  maskImage: "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
+  WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
+  maskComposite: "intersect",
+  WebkitMaskComposite: "source-in",
+} as const;
+
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
 
   const scrollToCTA = () => {
     document.querySelector("#cta")?.scrollIntoView({ behavior: "smooth" });
@@ -97,11 +107,34 @@ export function Hero() {
               <span style={{ color: "#ffffff" }}>Você no controle.</span>
             </motion.h2>
 
+            {/* Mobile video — visible only below lg, sits between heading and description */}
+            <motion.div
+              className="lg:hidden flex justify-center mb-6 w-full"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.35 }}
+            >
+              <div className="relative" style={{ ...videoStyle, width: "clamp(160px, 55vw, 260px)" }}>
+                <video
+                  ref={mobileVideoRef}
+                  src={videoHero}
+                  autoPlay
+                  muted
+                  playsInline
+                  onTimeUpdate={() => {
+                    const v = mobileVideoRef.current;
+                    if (v && v.currentTime >= 7) v.pause();
+                  }}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </div>
+            </motion.div>
+
             <motion.p
               style={{
                 fontFamily: "'Inter', sans-serif",
-                fontSize: "clamp(15px, 1.6vw, 18px)",
-                color: "#B4B4CC",
+                fontSize: "clamp(17px, 1.8vw, 20px)",
+                color: "#CECEE8",
                 lineHeight: 1.7,
                 maxWidth: "480px",
                 marginBottom: "36px",
@@ -143,7 +176,7 @@ export function Hero() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 600,
                   fontSize: "15px",
-                  color: "#B4B4CC",
+                  color: "#CECEE8",
                 }}
               >
                 Ver soluções
@@ -166,7 +199,7 @@ export function Hero() {
                   <div style={{ fontFamily: "'Petrona', serif", fontWeight: 800, fontSize: "28px", color: "#00C2FF" }}>
                     {stat.value}
                   </div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "#B4B4CC" }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "#CECEE8" }}>
                     {stat.label}
                   </div>
                 </div>
@@ -174,25 +207,14 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — 9:16 video */}
+          {/* RIGHT — desktop video only (hidden on mobile) */}
           <motion.div
-            className="flex-shrink-0 flex items-center justify-center"
+            className="hidden lg:flex flex-shrink-0 items-center justify-center"
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div
-              className="relative"
-              style={{
-                width: "clamp(200px, 22vw, 320px)",
-                aspectRatio: "9 / 16",
-                maskImage: "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-                WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%)",
-                maskComposite: "intersect",
-                WebkitMaskComposite: "source-in",
-              }}
-            >
-              {/* Video — pauses at second 7 */}
+            <div className="relative" style={videoStyle}>
               <video
                 ref={videoRef}
                 src={videoHero}
@@ -201,9 +223,7 @@ export function Hero() {
                 playsInline
                 onTimeUpdate={() => {
                   const v = videoRef.current;
-                  if (v && v.currentTime >= 7) {
-                    v.pause();
-                  }
+                  if (v && v.currentTime >= 7) v.pause();
                 }}
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
@@ -219,10 +239,10 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
         >
-          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "11px", color: "#B4B4CC", letterSpacing: "0.1em" }}>
+          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "11px", color: "#CECEE8", letterSpacing: "0.1em" }}>
             ROLE PARA BAIXO
           </span>
-          <ChevronDown size={16} color="#B4B4CC" className="animate-bounce" />
+          <ChevronDown size={16} color="#CECEE8" className="animate-bounce" />
         </motion.div>
 
       </div>
