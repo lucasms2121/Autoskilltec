@@ -31,14 +31,16 @@ export function Footer() {
             {/* Social */}
             <div className="flex gap-3 mt-5">
               {[
-                { icon: Instagram, label: "Instagram", href: "#" },
-                { icon: Linkedin, label: "LinkedIn", href: "#" },
-                { icon: MessageCircle, label: "WhatsApp", href: "#" },
+                { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/auto_skilltec?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+                { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/autoskilltec" },
+                { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/5586888210900" },
               ].map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-110"
                   style={{
                     background: "rgba(168,85,247,0.1)",
@@ -69,7 +71,6 @@ export function Footer() {
                 { label: "Serviços", href: "#servicos" },
                 { label: "Como funciona", href: "#como-funciona" },
                 { label: "Resultados", href: "#resultados" },
-                { label: "Sobre", href: "#sobre" },
                 { label: "FAQ", href: "#faq" },
               ].map(link => (
                 <button
@@ -91,7 +92,7 @@ export function Footer() {
             </h4>
             <div className="flex flex-col gap-3">
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#CECEE8" }}>
-                contato@autoskilltec.com.br
+                autoskilltec@gmail.com
               </p>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#CECEE8" }}>
                 Brasil — Atendimento nacional
