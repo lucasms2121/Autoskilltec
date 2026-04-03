@@ -1,16 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Star, Quote } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const stats = [
-  { value: 50, suffix: "+", label: "Empresas atendidas", color: "#00C2FF" },
-  { value: 40, suffix: "%", label: "Redução de retrabalho", color: "#A855F7" },
-  { value: 3, suffix: "x", label: "Mais velocidade nos processos", color: "#EC4899" },
-  { value: 98, suffix: "%", label: "Clientes satisfeitos", color: "#00C2FF" },
-];
 
 const testimonials = [
   {
@@ -39,46 +32,9 @@ const testimonials = [
   },
 ];
 
-function Counter({ end, suffix, color }: { end: number; suffix: string; color: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const trigger = ScrollTrigger.create({
-      trigger: ref.current,
-      start: "top 85%",
-      onEnter: () => {
-        if (started.current) return;
-        started.current = true;
-        let start = 0;
-        const duration = 2000;
-        const step = end / (duration / 16);
-        const timer = setInterval(() => {
-          start += step;
-          if (start >= end) {
-            setCount(end);
-            clearInterval(timer);
-          } else {
-            setCount(Math.floor(start));
-          }
-        }, 16);
-      },
-    });
-    return () => trigger.kill();
-  }, [end]);
-
-  return (
-    <div ref={ref} style={{ fontFamily: "'Petrona', serif", fontWeight: 800, fontSize: "clamp(40px, 5vw, 64px)", color, lineHeight: 1 }}>
-      {count}{suffix}
-    </div>
-  );
-}
-
 export function Results() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -86,10 +42,6 @@ export function Results() {
       gsap.fromTo(headerRef.current,
         { opacity: 0, y: 40 },
         { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", scrollTrigger: { trigger: headerRef.current, start: "top 85%" } }
-      );
-      gsap.fromTo(statsRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", scrollTrigger: { trigger: statsRef.current, start: "top 85%" } }
       );
       testimonialsRef.current.forEach((card, i) => {
         if (!card) return;
@@ -103,7 +55,7 @@ export function Results() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="resultados" className="relative py-28 px-6">
+    <section ref={sectionRef} id="resultados" className="relative py-16 px-6">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -136,7 +88,7 @@ export function Results() {
               lineHeight: 1.2,
             }}
           >
-            Números que falam{" "}
+            O que nossos{" "}
             <span
               style={{
                 background: "linear-gradient(135deg, #00C2FF, #A855F7)",
@@ -145,41 +97,9 @@ export function Results() {
                 backgroundClip: "text",
               }}
             >
-              por si só
+              clientes dizem
             </span>
           </h2>
-        </div>
-
-        {/* Stats grid */}
-        <div ref={statsRef} className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20 opacity-0">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="relative rounded-2xl border p-6 text-center flex flex-col items-center gap-3"
-              style={{
-                background: "linear-gradient(135deg, rgba(30,27,75,0.8) 0%, rgba(13,11,43,0.9) 100%)",
-                borderColor: `${stat.color}20`,
-              }}
-            >
-              <div
-                className="absolute inset-0 rounded-2xl pointer-events-none"
-                style={{
-                  background: `radial-gradient(circle at 50% 0%, ${stat.color}08 0%, transparent 60%)`,
-                }}
-              />
-              <Counter end={stat.value} suffix={stat.suffix} color={stat.color} />
-              <p
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: "13px",
-                  color: "#8080B8",
-                  lineHeight: 1.5,
-                }}
-              >
-                {stat.label}
-              </p>
-            </div>
-          ))}
         </div>
 
         {/* Testimonials */}

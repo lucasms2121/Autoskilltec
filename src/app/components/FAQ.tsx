@@ -22,24 +22,14 @@ const faqs = [
       "Depende da complexidade. Automações simples de processos podem ficar prontas em 1-2 semanas. Sistemas completos podem levar de 4 a 12 semanas. Trabalhamos em sprints — você já começa a ver resultado em 2 semanas, não espera meses para ver algo funcionando.",
   },
   {
-    question: "E se eu precisar de suporte depois da entrega?",
-    answer:
-      "Oferecemos acompanhamento contínuo após a entrega. Não sumimos depois que entregamos. Temos planos de suporte mensais e estamos disponíveis para ajustes, melhorias e para responder dúvidas. Parceiro de verdade, não só fornecedor.",
-  },
-  {
-    question: "Vocês trabalham com WhatsApp Business? Posso ter um chatbot?",
-    answer:
-      "Sim! Desenvolvemos chatbots inteligentes para WhatsApp Business usando a API oficial do WhatsApp. Podemos configurar desde atendimento automático básico até agentes de IA que respondem, qualificam leads e agendam reuniões — tudo 24/7, sem precisar de atendente.",
-  },
-  {
     question: "Como funciona o diagnóstico gratuito?",
     answer:
       "É uma conversa de 30 minutos via Google Meet. Você nos conta como funciona o seu negócio, onde estão os principais problemas e o que você gostaria de melhorar. A partir disso, criamos uma proposta personalizada com as soluções mais adequadas e o investimento necessário. Zero compromisso.",
   },
   {
-    question: "Vocês desenvolvem sistemas para qualquer segmento?",
+    question: "E se eu precisar de suporte depois da entrega?",
     answer:
-      "Atendemos PMEs de todos os segmentos — saúde, construção, varejo, logística, serviços, educação e muito mais. Nossa abordagem é sempre adaptada ao contexto do seu negócio. Já atendemos mais de 50 empresas de setores diferentes.",
+      "Oferecemos acompanhamento contínuo após a entrega. Não sumimos depois que entregamos. Temos planos de suporte mensais e estamos disponíveis para ajustes, melhorias e para responder dúvidas. Parceiro de verdade, não só fornecedor.",
   },
 ];
 
@@ -64,7 +54,7 @@ export function FAQ() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="faq" className="relative py-28 px-6">
+    <section ref={sectionRef} id="faq" className="relative py-16 px-6">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div ref={headerRef} className="text-center mb-14 opacity-0">
