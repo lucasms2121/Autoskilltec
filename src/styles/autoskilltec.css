@@ -1,0 +1,103 @@
+/* Global styles for Autoskilltec */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0D0B2B;
+  color: #FFFFFF;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0B2B;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00C2FF, #A855F7);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #00C2FF, #EC4899);
+}
+
+/* Smooth transitions for all interactive elements */
+button, a {
+  cursor: pointer;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: #FFFFFF;
+}
+
+/* Placeholder text color */
+input::placeholder {
+  color: rgba(128, 128, 184, 0.5);
+}
+
+/* Remove default input autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #FFFFFF;
+  -webkit-box-shadow: 0 0 0px 1000px #0D0B2B inset;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #00C2FF;
+}
+
+/* Glow pulse animation */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Section separator glow */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(168,85,247,0.3), transparent);
+  margin: 0;
+}
+
+/* Smooth scroll for anchor links */
+a[href^="#"] {
+  text-decoration: none;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Spin animation for loader */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Override default h1-h4 for this project */
+h1, h2, h3, h4, h5, h6 {
+  font-size: unset;
+  font-weight: unset;
+  line-height: unset;
+}
