@@ -84,7 +84,7 @@ export function About() {
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "16px",
-                color: "#8080B8",
+                color: "#B4B4CC",
                 lineHeight: 1.8,
               }}
             >
@@ -95,7 +95,7 @@ export function About() {
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "16px",
-                color: "#8080B8",
+                color: "#B4B4CC",
                 lineHeight: 1.8,
               }}
             >
@@ -163,7 +163,7 @@ export function About() {
                     style={{
                       fontFamily: "'Inter', sans-serif",
                       fontSize: "13px",
-                      color: "#8080B8",
+                      color: "#B4B4CC",
                       lineHeight: 1.6,
                     }}
                   >

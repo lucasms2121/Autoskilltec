@@ -171,7 +171,7 @@ export function Results() {
                   <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "14px", color: "#FFFFFF" }}>
                     {t.name}
                   </div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "#8080B8" }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "#B4B4CC" }}>
                     {t.role} · {t.company}
                   </div>
                 </div>

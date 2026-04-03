@@ -102,7 +102,7 @@ export function Loader({ onComplete }: LoaderProps) {
             </div>
             <div
               className="mt-2 tracking-wider"
-              style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "11px", color: "#8080B8", letterSpacing: "0.15em" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "11px", color: "#B4B4CC", letterSpacing: "0.15em" }}
             >
               SOLUÇÕES INTELIGENTES
             </div>
@@ -127,7 +127,7 @@ export function Loader({ onComplete }: LoaderProps) {
               />
             </div>
             <div
-              style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#8080B8" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#B4B4CC" }}
             >
               {progress}%
             </div>

@@ -105,7 +105,7 @@ export function CTAFinal() {
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: "17px",
-              color: "#8080B8",
+              color: "#B4B4CC",
               lineHeight: 1.7,
               maxWidth: "480px",
               margin: "0 auto",
@@ -136,7 +136,7 @@ export function CTAFinal() {
             >
               Recebemos sua mensagem!
             </h3>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "16px", color: "#8080B8", lineHeight: 1.7 }}>
+            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "16px", color: "#B4B4CC", lineHeight: 1.7 }}>
               Nossa equipe entrará em contato via WhatsApp em até 24h. <br />
               Mal podemos esperar para conhecer o seu negócio!
             </p>
@@ -158,7 +158,7 @@ export function CTAFinal() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 600,
                   fontSize: "13px",
-                  color: "#8080B8",
+                  color: "#B4B4CC",
                   letterSpacing: "0.05em",
                 }}
               >
@@ -188,7 +188,7 @@ export function CTAFinal() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 600,
                   fontSize: "13px",
-                  color: "#8080B8",
+                  color: "#B4B4CC",
                   letterSpacing: "0.05em",
                 }}
               >
@@ -223,7 +223,7 @@ export function CTAFinal() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 600,
                   fontSize: "13px",
-                  color: "#8080B8",
+                  color: "#B4B4CC",
                   letterSpacing: "0.05em",
                 }}
               >
@@ -283,8 +283,8 @@ export function CTAFinal() {
                 { icon: MessageCircle, text: "Contato via WhatsApp" },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-2">
-                  <Icon size={14} color="#8080B8" />
-                  <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#8080B8" }}>
+                  <Icon size={14} color="#B4B4CC" />
+                  <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#B4B4CC" }}>
                     {text}
                   </span>
                 </div>

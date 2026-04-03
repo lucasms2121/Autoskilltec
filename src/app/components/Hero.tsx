@@ -101,7 +101,7 @@ export function Hero() {
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "clamp(15px, 1.6vw, 18px)",
-                color: "#8080B8",
+                color: "#B4B4CC",
                 lineHeight: 1.7,
                 maxWidth: "480px",
                 marginBottom: "36px",
@@ -143,7 +143,7 @@ export function Hero() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 600,
                   fontSize: "15px",
-                  color: "#8080B8",
+                  color: "#B4B4CC",
                 }}
               >
                 Ver soluções
@@ -166,7 +166,7 @@ export function Hero() {
                   <div style={{ fontFamily: "'Petrona', serif", fontWeight: 800, fontSize: "28px", color: "#00C2FF" }}>
                     {stat.value}
                   </div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "#8080B8" }}>
+                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "#B4B4CC" }}>
                     {stat.label}
                   </div>
                 </div>
@@ -219,10 +219,10 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
         >
-          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "11px", color: "#8080B8", letterSpacing: "0.1em" }}>
+          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "11px", color: "#B4B4CC", letterSpacing: "0.1em" }}>
             ROLE PARA BAIXO
           </span>
-          <ChevronDown size={16} color="#8080B8" className="animate-bounce" />
+          <ChevronDown size={16} color="#B4B4CC" className="animate-bounce" />
         </motion.div>
 
       </div>

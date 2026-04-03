@@ -92,7 +92,7 @@ export function FAQ() {
               antes de começar
             </span>
           </h2>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "16px", color: "#8080B8", lineHeight: 1.7 }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "16px", color: "#B4B4CC", lineHeight: 1.7 }}>
             Respondemos as principais objeções com honestidade.
           </p>
         </div>
@@ -151,7 +151,7 @@ export function FAQ() {
                     style={{
                       fontFamily: "'Inter', sans-serif",
                       fontSize: "15px",
-                      color: "#8080B8",
+                      color: "#B4B4CC",
                       lineHeight: 1.8,
                     }}
                   >

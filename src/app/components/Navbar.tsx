@@ -57,9 +57,9 @@ export function Navbar() {
               key={link.href}
               onClick={() => scrollTo(link.href)}
               className="transition-colors duration-200"
-              style={{ fontFamily: "'Inter', sans-serif", fontSize: "14px", color: "#8080B8" }}
+              style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#B4B4CC" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#00C2FF")}
-              onMouseLeave={e => (e.currentTarget.style.color = "#8080B8")}
+              onMouseLeave={e => (e.currentTarget.style.color = "#B4B4CC")}
             >
               {link.label}
             </button>
@@ -107,7 +107,7 @@ export function Navbar() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontSize: "15px",
-                  color: "#8080B8",
+                  color: "#B4B4CC",
                   borderColor: "rgba(168,85,247,0.1)",
                 }}
               >
