@@ -10,29 +10,33 @@ const services = [
     id: "sistemas",
     icon: Code2,
     color: "#00C2FF",
-    title: "Sistemas sob medida",
-    description: "Do cadastro ao estoque — tudo integrado no seu processo.",
+    title: "Desenvolvimento de sistemas",
+    description: "Sistemas personalizados e adaptados para a sua necessidade.",
+    tags: ["ERP personalizado", "Portais web e apps"],
   },
   {
     id: "automacao",
     icon: Zap,
     color: "#A855F7",
     title: "Automação de processos",
-    description: "Eliminamos tarefas repetitivas com n8n, chatbots e Make.",
+    description: "Automatizamos tarefas repetitivas para sua equipe focar no que importa.",
+    tags: ["Fluxos automáticos", "Chatbots inteligentes"],
   },
   {
     id: "dados",
     icon: BarChart3,
     color: "#EC4899",
     title: "Análise de dados",
-    description: "Dashboards e relatórios que transformam dados em decisões.",
+    description: "Dashboards, relatórios e fluxo de dados otimizado de ponta a ponta.",
+    tags: ["Dashboards em tempo real", "KPIs do seu negócio"],
   },
   {
     id: "ia",
     icon: Brain,
     color: "#6B21A8",
     title: "IA aplicada",
-    description: "IA que resolve problemas reais — e treinamos seu time a usar.",
+    description: "Integramos IA nos seus processos e treinamos sua equipe para usar.",
+    tags: ["Treinamento de equipes", "Agentes de IA"],
   },
 ];
 
@@ -177,9 +181,27 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
         >
           {service.title}
         </h3>
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#8080B8", lineHeight: 1.6 }}>
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "15px", color: "#8080B8", lineHeight: 1.6, marginBottom: "14px" }}>
           {service.description}
         </p>
+        <div className="flex flex-wrap gap-2">
+          {service.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-3 py-1 rounded-lg"
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: "12px",
+                fontWeight: 600,
+                color: service.color,
+                background: `${service.color}10`,
+                border: `1px solid ${service.color}20`,
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
