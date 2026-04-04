@@ -7,27 +7,24 @@ gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
-    name: "Marcos Oliveira",
-    role: "CEO",
-    company: "Distribuidora FastLog",
-    text: "Em 3 semanas a Autoskilltec automatizou nosso processo de pedidos — o que levava 4 horas por dia virou automático. Minha equipe conseguiu focar em vender mais.",
-    result: "Economia de 120h/mês",
+    id: "construtora",
+    identifier: "Gestor · Construtora",
+    text: "Nosso controle de pedidos era todo no papel e no WhatsApp — perdia prazo, material chegava atrasado na obra. Criaram um sistema sob medida com alerta automático no WhatsApp. Hoje o pedido entra, o fornecedor é notificado na hora e o material chega no prazo.",
+    result: "Tempo de entrega reduzido em 50%",
     color: "#00C2FF",
   },
   {
-    name: "Fernanda Costa",
-    role: "Diretora",
-    company: "Clínica Saúde Total",
-    text: "Nosso controle de pacientes estava todo no WhatsApp e em papéis. Hoje temos um sistema que funciona, agenda automática e um dashboard que me mostra tudo em tempo real.",
-    result: "Zero agendamentos perdidos",
+    id: "advocacia",
+    identifier: "Diretor · Escritório de Advocacia",
+    text: "Tínhamos dezenas de planilhas que ninguém confiava — controle de prazos, processos e clientes tudo espalhado. Organizaram nosso fluxo de dados inteiro, automatizaram as planilhas e entregaram dashboards com relatórios automáticos. Agora abro um painel e sei exatamente o status de cada caso.",
+    result: "Dados centralizados + relatórios automáticos",
     color: "#A855F7",
   },
   {
-    name: "Ricardo Mendes",
-    role: "Sócio-fundador",
-    company: "Construtora VRM",
-    text: "Implantaram IA no nosso atendimento e automatizaram os orçamentos. O que demorava 2 dias para montar agora sai em minutos. Resultado: fechamos 40% mais contratos.",
-    result: "+40% em contratos fechados",
+    id: "clinica",
+    identifier: "Diretora · Clínica de Saúde",
+    text: "Nosso WhatsApp era um caos — paciente mandava mensagem e ficava horas sem resposta, perdia agendamento. Implantaram um chatbot de IA que tira dúvidas, verifica disponibilidade e agenda consultas direto na agenda. Atendimento virou 24h sem contratar ninguém.",
+    result: "Atendimento 24h no WhatsApp com IA",
     color: "#EC4899",
   },
 ];
@@ -106,7 +103,7 @@ export function Results() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <div
-              key={t.name}
+              key={t.id}
               ref={(el) => { testimonialsRef.current[i] = el; }}
               className="opacity-0 relative rounded-2xl border p-7 flex flex-col gap-5 hover:scale-[1.02] transition-transform duration-300"
               style={{
@@ -157,24 +154,9 @@ export function Results() {
                 ✦ {t.result}
               </div>
 
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center"
-                  style={{ background: `${t.color}20`, border: `1px solid ${t.color}30` }}
-                >
-                  <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "14px", color: t.color }}>
-                    {t.name[0]}
-                  </span>
-                </div>
-                <div>
-                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: "14px", color: "#FFFFFF" }}>
-                    {t.name}
-                  </div>
-                  <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "12px", color: "#CECEE8" }}>
-                    {t.role} · {t.company}
-                  </div>
-                </div>
+              {/* Identifier */}
+              <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "13px", fontWeight: 600, color: "#CECEE8" }}>
+                {t.identifier}
               </div>
             </div>
           ))}
