@@ -191,7 +191,6 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.7 }}
             >
               {[
-                { value: "+50", label: "Empresas atendidas" },
                 { value: "40%", label: "Redução de retrabalho" },
                 { value: "3x", label: "Mais velocidade" },
               ].map((stat) => (
