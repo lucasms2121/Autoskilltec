@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useForm } from "react-hook-form";
@@ -12,6 +12,36 @@ interface FormData {
   empresa: string;
 }
 
+const WEBHOOK_URL = "https://n8nevo-n8n-webhook.3fmybz.easypanel.host/webhook/242bcfe6-ae9f-408e-a5f3-509adff0370a";
+const RATE_LIMIT_KEY = "ast_last_submit";
+const RATE_LIMIT_MS = 60_000; // 1 minute
+
+function sanitize(value: string, maxLength: number): string {
+  return value
+    .replace(/<[^>]*>/g, "")   // strip HTML tags
+    .replace(/[<>"'`]/g, "")   // strip remaining dangerous chars
+    .trim()
+    .slice(0, maxLength);
+}
+
+function isRateLimited(): boolean {
+  try {
+    const last = localStorage.getItem(RATE_LIMIT_KEY);
+    if (!last) return false;
+    return Date.now() - parseInt(last, 10) < RATE_LIMIT_MS;
+  } catch {
+    return false;
+  }
+}
+
+function markSubmit(): void {
+  try {
+    localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
+  } catch {
+    // localStorage unavailable — continue without rate limiting
+  }
+}
+
 function formatWhatsApp(value: string) {
   const nums = value.replace(/\D/g, "").slice(0, 11);
   if (nums.length <= 2) return nums;
@@ -21,6 +51,7 @@ function formatWhatsApp(value: string) {
 
 export function CTAFinal() {
   const { register, handleSubmit, setValue, watch, formState: { errors, isSubmitting, isSubmitSuccessful } } = useForm<FormData>();
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -37,12 +68,58 @@ export function CTAFinal() {
   }, []);
 
   const onSubmit = async (data: FormData) => {
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    // In production: integrate with EmailJS, n8n webhook, or similar
-    const message = `Olá! Vim pelo site da Autoskilltec.%0ANome: ${data.nome}%0AEmpresa: ${data.empresa}`;
-    const phone = data.whatsapp.replace(/\D/g, "");
-    window.open(`https://wa.me/55${phone}?text=${message}`, "_blank");
+    setSubmitError(null);
+
+    if (isRateLimited()) {
+      setSubmitError("Aguarde um momento antes de enviar novamente.");
+      return;
+    }
+
+    const payload = {
+      nome: sanitize(data.nome, 120),
+      whatsapp: data.whatsapp.replace(/\D/g, "").slice(0, 11),
+      empresa: sanitize(data.empresa, 120),
+      origem: "landing-page",
+      timestamp: new Date().toISOString(),
+    };
+
+    // Basic structural validation after sanitization
+    if (payload.nome.length < 2 || payload.empresa.length < 2) {
+      setSubmitError("Por favor, preencha os campos corretamente.");
+      return;
+    }
+    if (payload.whatsapp.length < 10 || payload.whatsapp.length > 11) {
+      setSubmitError("WhatsApp inválido. Use o formato (DD) 9XXXX-XXXX.");
+      return;
+    }
+
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10_000);
+
+    try {
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeout);
+
+      if (!response.ok) {
+        throw new Error("server_error");
+      }
+
+      markSubmit();
+    } catch (err) {
+      clearTimeout(timeout);
+      if (err instanceof Error && err.name === "AbortError") {
+        setSubmitError("A solicitação demorou muito. Tente novamente.");
+      } else {
+        setSubmitError("Erro ao enviar. Tente novamente ou fale conosco pelo WhatsApp.");
+      }
+      throw err; // re-throw so react-hook-form does not mark as successful
+    }
   };
 
   return (
@@ -245,6 +322,13 @@ export function CTAFinal() {
               />
               {errors.empresa && <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#EC4899" }}>{errors.empresa.message}</span>}
             </div>
+
+            {/* Submit error */}
+            {submitError && (
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "13px", color: "#EC4899", textAlign: "center" }}>
+                {submitError}
+              </p>
+            )}
 
             {/* Submit */}
             <button
