@@ -75,7 +75,7 @@ export function Services() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="servicos" className="relative py-16 px-6">
+    <section ref={sectionRef} id="servicos" className="relative py-16 px-6 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{

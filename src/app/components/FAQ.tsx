@@ -54,7 +54,7 @@ export function FAQ() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="faq" className="relative py-16 px-6">
+    <section ref={sectionRef} id="faq" className="relative py-16 px-6 overflow-hidden">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div ref={headerRef} className="text-center mb-14 opacity-0">

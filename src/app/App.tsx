@@ -22,7 +22,7 @@ export default function App() {
 
       {loaded && (
         <div
-          className="relative min-h-screen"
+          className="relative min-h-screen overflow-x-hidden"
           style={{ background: "#0D0B2B" }}
         >
           {/* Animated backgrounds */}

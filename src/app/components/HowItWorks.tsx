@@ -82,7 +82,7 @@ export function HowItWorks() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="como-funciona" className="relative py-28 px-6">
+    <section ref={sectionRef} id="como-funciona" className="relative py-28 px-6 overflow-hidden">
       {/* Section background accent */}
       <div
         className="absolute inset-0 pointer-events-none"

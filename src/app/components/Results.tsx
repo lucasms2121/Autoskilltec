@@ -55,7 +55,7 @@ export function Results() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="resultados" className="relative py-16 px-6">
+    <section ref={sectionRef} id="resultados" className="relative py-16 px-6 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{

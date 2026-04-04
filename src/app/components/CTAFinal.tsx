@@ -123,7 +123,7 @@ export function CTAFinal() {
   };
 
   return (
-    <section ref={sectionRef} id="cta" className="relative py-28 px-6">
+    <section ref={sectionRef} id="cta" className="relative py-28 px-6 overflow-hidden">
       {/* CTA background */}
       <div
         className="absolute inset-0 pointer-events-none"
