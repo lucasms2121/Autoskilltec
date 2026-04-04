@@ -33,7 +33,7 @@ export function Footer() {
               {[
                 { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/auto_skilltec?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
                 { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/autoskilltec" },
-                { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/5586888210900" },
+                { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/558688821090" },
               ].map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
@@ -122,9 +122,6 @@ export function Footer() {
         >
           <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#CECEE8" }}>
             © 2026 Autoskilltec. Todos os direitos reservados.
-          </p>
-          <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: "12px", color: "#CECEE8" }}>
-            Feito com ✦ e tecnologia para PMEs brasileiras
           </p>
         </div>
       </div>
